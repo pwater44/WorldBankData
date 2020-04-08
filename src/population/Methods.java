@@ -11,20 +11,22 @@ public class Methods {
 	StrUtils utils = new StrUtils();
 	FileUtils fUtils = new FileUtils();
 	ArrayList<WorldBankEntry> entryArr = new ArrayList<>();
+	DispalyCountriesFrm cFrm;
 
 	// No-argument constructor
 	public Methods() {
 		arr = fUtils.readFile("./worldBank.txt");
 
 		// parse the number from the string using ";" as marker
-		for (int idx = 0; idx < arr.size(); idx++) {
+		for (int idx = 1; idx < arr.size(); idx++) {
 			WorldBankEntry entry = utils.parseWorldBankEntry(arr.get(idx));
 			if (entry != null) {
 				entryArr.add(entry);
 			}
 		}
-		printArrayList(entryArr);
-		Charts chart = new Charts(entryArr);
+		cFrm = new DispalyCountriesFrm(entryArr);
+		//printArrayList(entryArr);
+		//Charts chart = new Charts(entryArr);
 	}
 	
 	private void printArrayList(ArrayList<WorldBankEntry> entryArr) {
